@@ -1,14 +1,11 @@
 [Unit]
-Description=Persistent evtest monitoring
-After=network.target
+Description=Keep the ELAN1206 I2C touchpad usable (rebind idma64 on touch, unbind when idle)
+# No ordering needed: the program waits for the touchpad device to appear.
 
 [Service]
 ExecStart=/usr/local/bin/touchpad-monitor
-Restart=on-failure
+Restart=always
 RestartSec=5
-User=root
-Group=root
 
 [Install]
 WantedBy=multi-user.target
-
